@@ -1,7 +1,11 @@
 import React from "react";
 import Search from "./Search";
 
-function Header() {
+function Header({ onSearchSubmit, sorted, onSortClick }) {
+  function handleClick() {
+    onSortClick(!sorted);
+  }
+
   return (
     <header>
       <h1>
@@ -10,7 +14,8 @@ function Header() {
         </span>
         gregslist
       </h1>
-      <Search />
+      <Search onSearchSubmit={onSearchSubmit} />
+      <button onClick={handleClick}>{sorted ? "Sort!" : "Unsort!"}</button>
     </header>
   );
 }
